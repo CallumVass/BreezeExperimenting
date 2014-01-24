@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201401241841170_Initial.Designer.cs">
       <DependentUpon>201401241841170_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201401241937138_AddedMaxLengthToLocation.cs" />
+    <Compile Include="Migrations\201401241937138_AddedMaxLengthToLocation.Designer.cs">
+      <DependentUpon>201401241937138_AddedMaxLengthToLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BreezeContext.cs" />
     <Compile Include="Models\BreezeContextProvider.cs" />
@@ -245,6 +249,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201401241841170_Initial.resx">
       <DependentUpon>201401241841170_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401241937138_AddedMaxLengthToLocation.resx">
+      <DependentUpon>201401241937138_AddedMaxLengthToLocation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
