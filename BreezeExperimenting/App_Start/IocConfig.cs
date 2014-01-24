@@ -31,8 +31,8 @@ namespace BreezeExperimenting
             var perRequestLifeTime = new WebRequestLifestyle();
 
 
-            container.Register<BreezeRepository>();
-            container.Register<BreezeContextProvider>();
+            container.Register<BreezeRepository>(perRequestLifeTime);
+            container.Register<BreezeContextProvider>(perRequestLifeTime);
 
 
             // Verify the container configuration
