@@ -25,7 +25,7 @@
             	.toType('Person')
 				.using(manager)
 		        .execute()
-		        .to$q(querySucceeded, self._queryFailed);
+		        .to$q(querySucceeded, _queryFailed);
 
             function querySucceeded(data) {
                 var people = data.results;
