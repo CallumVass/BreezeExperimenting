@@ -20,7 +20,7 @@
         docTitle: 'HotTowel: ',
         events: events,
         remoteServiceName: remoteServiceName,
-        version: '2.0.0'
+        version: '2.1.0'
     };
 
     app.value('config', config);
@@ -38,13 +38,4 @@
         cfg.config.spinnerToggleEvent = config.events.spinnerToggle;
     }]);
     //#endregion
-
-    //#region Configure the Breeze Validation Directive
-    app.config(['zDirectivesConfigProvider', function (cfg) {
-        cfg.zValidateTemplate =
-                     '<span class="invalid"><i class="icon-warning-sign"></i>' +
-                     '%error%</span>';
-        //cfg.zRequiredTemplate =
-        //    '<i class="icon-asterisk icon-asterisk-invalid z-required" title="Required"></i>';
-    }]);
 })();

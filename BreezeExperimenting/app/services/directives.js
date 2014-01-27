@@ -3,9 +3,28 @@
 
     var app = angular.module('app');
 
-    app.directive('ccSidebar', ['$window', function ($window) {
-        // Repositions the sidebar on window resize 
-        // and opens and closes the sidebar menu.
+    app.directive('ccImgPerson', ['config', function (config) {
+        //Usage:
+        //<img data-cc-img-person="{{s.speaker.imageSource}}"/>
+        var basePath = config.imageSettings.imageBasePath;
+        var unknownImage = config.imageSettings.unknownPersonImageSource;
+        var directive = {
+            link: link,
+            restrict: 'A'
+        };
+        return directive;
+
+        function link(scope, element, attrs) {
+            attrs.$observe('ccImgPerson', function(value) {
+                value = basePath + (value || unknownImage);
+                attrs.$set('src', value);
+            });
+        }
+    }]);
+
+
+    app.directive('ccSidebar', function () {
+        // Opens and clsoes the sidebar menu.
         // Usage:
         //  <div data-cc-sidebar>
         // Creates:
@@ -14,19 +33,13 @@
             link: link,
             restrict: 'A'
         };
-        var $win = $($window);
         return directive;
 
         function link(scope, element, attrs) {
             var $sidebarInner = element.find('.sidebar-inner');
             var $dropdownElement = element.find('.sidebar-dropdown a');
             element.addClass('sidebar');
-            $win.resize(resize);
             $dropdownElement.click(dropdown);
-
-            function resize() {
-                $win.width() >= 765 ? $sidebarInner.slideDown(350) : $sidebarInner.slideUp(350);
-            }
 
             function dropdown(e) {
                 var dropClass = 'dropy';
@@ -46,18 +59,19 @@
                 }
             }
         }
-    }]);
+    });
+
 
     app.directive('ccWidgetClose', function () {
         // Usage:
         // <a data-cc-widget-close></a>
         // Creates:
         // <a data-cc-widget-close="" href="#" class="wclose">
-        //     <i class="icon-remove"></i>
+        //     <i class="fa fa-remove"></i>
         // </a>
         var directive = {
             link: link,
-            template: '<i class="icon-remove"></i>',
+            template: '<i class="fa fa-remove"></i>',
             restrict: 'A'
         };
         return directive;
@@ -78,10 +92,10 @@
         // Usage:
         // <a data-cc-widget-minimize></a>
         // Creates:
-        // <a data-cc-widget-minimize="" href="#"><i class="icon-chevron-up"></i></a>
+        // <a data-cc-widget-minimize="" href="#"><i class="fa fa-chevron-up"></i></a>
         var directive = {
             link: link,
-            template: '<i class="icon-chevron-up"></i>',
+            template: '<i class="fa fa-chevron-up"></i>',
             restrict: 'A'
         };
         return directive;
@@ -97,11 +111,11 @@
                 var $wcontent = element.parent().parent().next('.widget-content');
                 var iElement = element.children('i');
                 if ($wcontent.is(':visible')) {
-                    iElement.removeClass('icon-chevron-up');
-                    iElement.addClass('icon-chevron-down');
+                    iElement.removeClass('fa fa-chevron-up');
+                    iElement.addClass('fa fa-chevron-down');
                 } else {
-                    iElement.removeClass('icon-chevron-down');
-                    iElement.addClass('icon-chevron-up');
+                    iElement.removeClass('fa fa-chevron-down');
+                    iElement.addClass('fa fa-chevron-up');
                 }
                 $wcontent.toggle(500);
             }
@@ -113,12 +127,12 @@
         // <span data-cc-scroll-to-top></span>
         // Creates:
         // <span data-cc-scroll-to-top="" class="totop">
-        //      <a href="#"><i class="icon-chevron-up"></i></a>
+        //      <a href="#"><i class="fa fa-chevron-up"></i></a>
         // </span>
         function ($window) {
             var directive = {
                 link: link,
-                template: '<a href="#"><i class="icon-chevron-up"></i></a>',
+                template: '<a href="#"><i class="fa fa-chevron-up"></i></a>',
                 restrict: 'A'
             };
             return directive;

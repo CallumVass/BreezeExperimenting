@@ -2,10 +2,9 @@
     'use strict';
 
     var serviceId = 'datacontext';
-    angular.module('app').factory(serviceId,
-        ['common', 'entityManagerFactory', 'config', datacontext]);
+    angular.module('app').factory(serviceId, ['common', 'entityManagerFactory', datacontext]);
 
-    function datacontext(common, emFactory, config) {
+    function datacontext(common, emFactory) {
         var $q = common.$q;
         var manager = emFactory.newManager();
         var logError = common.logger.getLogFn(this.serviceId, 'error');
@@ -21,11 +20,11 @@
         function getMessageCount() { return $q.when(72); }
 
         function getPeople() {
-            return EntityQuery.from('People')
-            	.toType('Person')
-				.using(manager)
-		        .execute()
-		        .to$q(querySucceeded, _queryFailed);
+            return EntityQuery  .from('People')
+                                .toType('Person')
+                                .using(manager)
+                                .execute()
+                                .then(querySucceeded, _queryFailed);
 
             function querySucceeded(data) {
                 var people = data.results;
