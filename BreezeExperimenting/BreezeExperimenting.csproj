@@ -141,6 +141,8 @@
     <Content Include="app\layout\sidebar.js" />
     <Content Include="app\layout\topnav.html" />
     <Content Include="app\layout\widgetheader.html" />
+    <Content Include="app\person\personnew.html" />
+    <Content Include="app\person\personnew.js" />
     <Content Include="app\services\datacontext.js" />
     <Content Include="app\services\directives.js" />
     <Content Include="app\services\entityManagerFactory.js" />
@@ -208,7 +210,9 @@
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.10.0.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.10.0.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BreezeWebApiConfig.cs" />

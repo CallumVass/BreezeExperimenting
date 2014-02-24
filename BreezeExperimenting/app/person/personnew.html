@@ -1,0 +1,50 @@
+﻿<section class="mainbar" data-ng-controller="personnew as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wgreen">
+                    <div data-cc-widget-header title="{{vm.title}}"></div>
+                    <div class="widget-content user">
+                        
+                        <form role="form">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input class="form-control"
+                                    data-z-validate
+                                    data-ng-model="vm.person.firstName"
+                                    placeholder="First Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input class="form-control"
+                                    data-z-validate
+                                    data-ng-model="vm.person.lastName"
+                                    placeholder="Last Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input class="form-control"
+                                    data-z-validate
+                                    data-ng-model="vm.person.location"
+                                    placeholder="Location">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Age</label>
+                                <input class="form-control"
+                                    data-z-validate
+                                    data-ng-model="vm.person.age"
+                                    placeholder="Age">
+                            </div>
+
+                            <button type="submit" data-ng-click="vm.createPerson()" class="btn btn-default">Create</button>
+                        </form>
+                    </div>
+                    <div class="widget-foot">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

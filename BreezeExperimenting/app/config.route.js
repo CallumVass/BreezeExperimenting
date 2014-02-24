@@ -5,7 +5,7 @@
 
     // Collect the routes
     app.constant('routes', getRoutes());
-    
+
     // Configure the routes and route resolvers
     app.config(['$routeProvider', 'routes', routeConfigurator]);
     function routeConfigurator($routeProvider, routes) {
@@ -38,6 +38,13 @@
                         nav: 2,
                         content: '<i class="fa fa-lock"></i> Admin'
                     }
+                }
+            }, {
+                url: '/people/new',
+                config: {
+                    title: 'new person',
+                    templateUrl: 'app/person/personnew.html',
+                    settings: {}
                 }
             }
         ];
